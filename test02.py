@@ -30,6 +30,7 @@ def fun1(*x):
 def fun2(x):
     print(x)
 
-m=(1,2,3)
+# m = (1,2,3)
+m = 1,2,3
 fun1(m)
 fun2(m)
