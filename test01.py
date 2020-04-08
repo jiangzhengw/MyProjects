@@ -86,6 +86,10 @@ d = {d: d**2 for d in (2,4,5)}
 for k , v in d.items():
     print(k,v)
 
+# enumerate返回下标和key值
+for k , v in enumerate(d):
+    print(k,v)
+
 # if elif else
 
 # for遍历 for i in List：

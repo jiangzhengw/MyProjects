@@ -6,7 +6,7 @@ def num():
     print(2+2)
 # num()
 
-# 函数参数学习，a关键词参数，b默认参数，c可变参数拆箱参数，d拆箱参数
+# 函数参数学习，a关键词参数，b默认参数，c可变参数拆箱参数，d词典参数
 # a:卡位，需要传参，
 # b:不需要传参有默认值的参数
 # *表示任意长度参数
@@ -32,5 +32,32 @@ def fun2(x):
 
 # m = (1,2,3)
 m = 1,2,3
+fun1(1,2,3)
 fun1(m)
+fun1(*m)
 fun2(m)
+
+# 设置返回值类型
+def fun3(x) ->str:
+    print(x)
+
+
+
+# 类定义
+class Student:
+    # 类变量
+    name=""
+    # 初始化方法
+
+    # 实例方法
+    def study(self,*c):
+        # 实例变量
+
+        self.name = c
+        print(c)
+        return c
+class Teacher:
+    # 类方法
+    @classmethod
+    def shar(cls,*c):
+        print(c)
