@@ -30,7 +30,7 @@ class TestDemo(unittest.TestCase):
         self.assert_(3, x, f'x={x} exception=3')
 
 
-# 使终端窗口（python）中可以执行测试用例
+# 使终端窗口中的（python）中可以执行测试用例
 if __name__ == '__main__':
     unittest.main()
 
