@@ -21,7 +21,7 @@ def setup_function():
     print("setup_function")
 
 
-class TestClass:
+class TestDemo:
     # test fixture 用例执行顺序
 
     def setup(self):
@@ -33,12 +33,15 @@ class TestClass:
         print("setup_class")
 
     def test_one(self):
-        a = "this"
-        assert "h" in a
+        x = "this"
+        assert "h" in x
 
     def test_two(self):
-        b = "is"
-        assert "a" in b
+        x = "hello"
+        hasattr()
+        # 函数用于判断对象是否包含对应的属性。
+        assert hasattr(x, "check")
 
-
-
+    def test_x(self):
+        demo = TestDemo()
+        demo.test_one()
