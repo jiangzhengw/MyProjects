@@ -27,7 +27,7 @@ class TestDemo(unittest.TestCase):
         x = 1 + 2
         # x.print，ide快捷生成print语句
         print(x)
-        self.assert_(3, x, f'x={x} exception=3')
+        self.assertEqual(3, x, f'x={x} exception=3')
 
 
 # 使终端窗口中的（python）中可以执行测试用例
