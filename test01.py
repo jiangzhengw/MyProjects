@@ -77,10 +77,13 @@ t = 1, 2, 3, (5, 6, 7)
 
 # 词典Dictionary
 d = {'a': 1, 'name': "apple"}
+print("--------------")
 d['a']
 d['age'] = 10
 d['age']
 d = {d: d ** 2 for d in (2, 4, 5)}
+print(d)
+print("--------------")
 # 词典遍历
 for k, v in d.items():
     print(k, v)
