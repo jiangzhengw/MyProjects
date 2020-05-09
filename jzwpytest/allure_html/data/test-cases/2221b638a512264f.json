@@ -1,0 +1,65 @@
+{
+  "uid" : "2221b638a512264f",
+  "name" : "test_div_exc",
+  "fullName" : "jzwpytest.test_div.TestBreakWork#test_div_exc",
+  "historyId" : "a830d89e2d94bccd5ac69f49c6c57d34",
+  "time" : {
+    "start" : 1589008883084,
+    "stop" : 1589008883085,
+    "duration" : 1
+  },
+  "status" : "broken",
+  "statusMessage" : "TypeError: unsupported operand type(s) for /: 'int' and 'str'",
+  "statusTrace" : "self = <jzwpytest.test_div.TestBreakWork object at 0x000001A32E084FC8>\n\n    @pytest.mark.exception\n    def test_div_exc(self):\n        # 不会出现商业报错，崩溃\n>       assert div(10, 'a')\n\njzwpytest\\test_div.py:40: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n\na = 10, b = 'a'\n\n    def div(a, b):\n        # todo:健壮性、异常处理\n>       return a / b\nE       TypeError: unsupported operand type(s) for /: 'int' and 'str'\n\njzwpytest\\div.py:3: TypeError",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ ],
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "tag",
+    "value" : "exception"
+  }, {
+    "name" : "parentSuite",
+    "value" : "jzwpytest"
+  }, {
+    "name" : "suite",
+    "value" : "test_div"
+  }, {
+    "name" : "subSuite",
+    "value" : "TestBreakWork"
+  }, {
+    "name" : "host",
+    "value" : "jiangzhw0100"
+  }, {
+    "name" : "thread",
+    "value" : "26168-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "jzwpytest.test_div"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ {
+      "name" : "Test defects",
+      "matchedStatuses" : [ ],
+      "flaky" : false
+    } ],
+    "tags" : [ "exception" ]
+  },
+  "source" : "2221b638a512264f.json",
+  "parameterValues" : [ ]
+}

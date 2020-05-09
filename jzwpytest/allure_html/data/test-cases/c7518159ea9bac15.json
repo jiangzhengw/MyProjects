@@ -1,0 +1,59 @@
+{
+  "uid" : "c7518159ea9bac15",
+  "name" : "test_div_int",
+  "fullName" : "jzwpytest.test_div.TestBreakWork#test_div_int",
+  "historyId" : "fb834b49c8899533ab69610bb863cbf3",
+  "time" : {
+    "start" : 1589008883034,
+    "stop" : 1589008883034,
+    "duration" : 0
+  },
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ ],
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "tag",
+    "value" : "happy"
+  }, {
+    "name" : "parentSuite",
+    "value" : "jzwpytest"
+  }, {
+    "name" : "suite",
+    "value" : "test_div"
+  }, {
+    "name" : "subSuite",
+    "value" : "TestBreakWork"
+  }, {
+    "name" : "host",
+    "value" : "jiangzhw0100"
+  }, {
+    "name" : "thread",
+    "value" : "26168-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "jzwpytest.test_div"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ ],
+    "tags" : [ "happy" ]
+  },
+  "source" : "c7518159ea9bac15.json",
+  "parameterValues" : [ ]
+}

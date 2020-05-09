@@ -1,0 +1,15 @@
+{
+  "total" : 1,
+  "items" : [ {
+    "uid" : "904502b85cad8264e94c8999c16fbb0c",
+    "name" : "jzwpytest",
+    "statistic" : {
+      "failed" : 3,
+      "broken" : 3,
+      "skipped" : 0,
+      "passed" : 13,
+      "unknown" : 0,
+      "total" : 19
+    }
+  } ]
+}

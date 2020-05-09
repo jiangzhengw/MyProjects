@@ -1,0 +1,59 @@
+{
+  "uid" : "d63766c6cc0bfa6c",
+  "name" : "test_div_fu",
+  "fullName" : "jzwpytest.test_div.TestBreakWork#test_div_fu",
+  "historyId" : "bc4e1252320763a467a44012e0b9ef3c",
+  "time" : {
+    "start" : 1589008883094,
+    "stop" : 1589008883094,
+    "duration" : 0
+  },
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ ],
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "tag",
+    "value" : "fu"
+  }, {
+    "name" : "parentSuite",
+    "value" : "jzwpytest"
+  }, {
+    "name" : "suite",
+    "value" : "test_div"
+  }, {
+    "name" : "subSuite",
+    "value" : "TestBreakWork"
+  }, {
+    "name" : "host",
+    "value" : "jiangzhw0100"
+  }, {
+    "name" : "thread",
+    "value" : "26168-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "jzwpytest.test_div"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ ],
+    "tags" : [ "fu" ]
+  },
+  "source" : "d63766c6cc0bfa6c.json",
+  "parameterValues" : [ ]
+}

@@ -1,0 +1,64 @@
+{
+  "uid" : "a83eab00b76d8a6b",
+  "name" : "test_div_2",
+  "fullName" : "jzwpytest.test_div_1.TestBreakWork#test_div_2",
+  "historyId" : "35a93c47e4dfdb1fdabf4df49d4b524e",
+  "time" : {
+    "start" : 1589008883104,
+    "stop" : 1589008883104,
+    "duration" : 0
+  },
+  "description" : "\n        b=0\n        :return:\n        ",
+  "descriptionHtml" : "<pre><code>    b=0\n    :return:\n</code></pre>\n",
+  "status" : "broken",
+  "statusMessage" : "ZeroDivisionError: division by zero",
+  "statusTrace" : "self = <jzwpytest.test_div_1.TestBreakWork object at 0x000001A32E081548>\n\n    def test_div_2(self):\n        \"\"\"\n        b=0\n        :return:\n        \"\"\"\n>       assert div(1, 0) is None\n\njzwpytest\\test_div_1.py:19: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n\na = 1, b = 0\n\n    def div(a, b):\n        # todo:健壮性、异常处理\n>       return a / b\nE       ZeroDivisionError: division by zero\n\njzwpytest\\div.py:3: ZeroDivisionError",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ ],
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "parentSuite",
+    "value" : "jzwpytest"
+  }, {
+    "name" : "suite",
+    "value" : "test_div_1"
+  }, {
+    "name" : "subSuite",
+    "value" : "TestBreakWork"
+  }, {
+    "name" : "host",
+    "value" : "jiangzhw0100"
+  }, {
+    "name" : "thread",
+    "value" : "26168-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "jzwpytest.test_div_1"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ {
+      "name" : "Test defects",
+      "matchedStatuses" : [ ],
+      "flaky" : false
+    } ],
+    "tags" : [ ]
+  },
+  "source" : "a83eab00b76d8a6b.json",
+  "parameterValues" : [ ]
+}

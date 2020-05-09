@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite errors="0" failures="6" hostname="jiangzhw0100" name="pytest" skipped="0" tests="19" time="0.291" timestamp="2020-05-09T15:21:22.856809"><testcase classname="jzwpytest.test_div.TestBreakWork" file="jzwpytest\test_div.py" line="13" name="test_div_int" time="0.003"></testcase><testcase classname="jzwpytest.test_div.TestBreakWork" file="jzwpytest\test_div.py" line="20" name="test_div_int_param[10000-1-10000]" time="0.002"></testcase><testcase classname="jzwpytest.test_div.TestBreakWork" file="jzwpytest\test_div.py" line="20" name="test_div_int_param[10-5-3]" time="0.004"><failure message="assert 2.0 == 3
+ +  where 2.0 = div(10, 5)">self = &lt;jzwpytest.test_div.TestBreakWork object at 0x000001A32E0A49C8&gt;, num1 = 10, num2 = 5, res = 3
+
+    @pytest.mark.happy
+    @pytest.mark.parametrize(&quot;num1, num2, res&quot;, {
+        (10, 2, 5),
+        (10, 5, 2),
+        (10, 5, 3),
+        (10000, 1, 10000)
+    })
+    def test_div_int_param(self, num1, num2, res):
+&gt;       assert div(num1, num2) == res
+E       assert 2.0 == 3
+E        +  where 2.0 = div(10, 5)
+
+jzwpytest\test_div.py:29: AssertionError</failure></testcase><testcase classname="jzwpytest.test_div.TestBreakWork" file="jzwpytest\test_div.py" line="20" name="test_div_int_param[10-5-2]" time="0.003"></testcase><testcase classname="jzwpytest.test_div.TestBreakWork" file="jzwpytest\test_div.py" line="20" name="test_div_int_param[10-2-5]" time="0.003"></testcase><testcase classname="jzwpytest.test_div.TestBreakWork" file="jzwpytest\test_div.py" line="30" name="test_div_float" time="0.001"><failure message="assert 3.3333333333333335 == 3.33
+ +  where 3.3333333333333335 = div(10, 3)">self = &lt;jzwpytest.test_div.TestBreakWork object at 0x000001A32E0AA048&gt;
+
+    @pytest.mark.happy
+    def test_div_float(self):
+        # 结果是浮点数，a，b本身就是浮点数
+&gt;       assert div(10, 3) == 3.33
+E       assert 3.3333333333333335 == 3.33
+E        +  where 3.3333333333333335 = div(10, 3)
+
+jzwpytest\test_div.py:34: AssertionError</failure></testcase><testcase classname="jzwpytest.test_div.TestBreakWork" file="jzwpytest\test_div.py" line="36" name="test_div_exc" time="0.001"><failure message="TypeError: unsupported operand type(s) for /: &apos;int&apos; and &apos;str&apos;">self = &lt;jzwpytest.test_div.TestBreakWork object at 0x000001A32E084FC8&gt;
+
+    @pytest.mark.exception
+    def test_div_exc(self):
+        # 不会出现商业报错，崩溃
+&gt;       assert div(10, &apos;a&apos;)
+
+jzwpytest\test_div.py:40: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+a = 10, b = &apos;a&apos;
+
+    def div(a, b):
+        # todo:健壮性、异常处理
+&gt;       return a / b
+E       TypeError: unsupported operand type(s) for /: &apos;int&apos; and &apos;str&apos;
+
+jzwpytest\div.py:3: TypeError</failure></testcase><testcase classname="jzwpytest.test_div.TestBreakWork" file="jzwpytest\test_div.py" line="42" name="test_div_zero" time="0.000"></testcase><testcase classname="jzwpytest.test_div.TestBreakWork" file="jzwpytest\test_div.py" line="47" name="test_div_fu" time="0.001"></testcase><testcase classname="jzwpytest.test_div_1.TestBreakWork" file="jzwpytest\test_div_1.py" line="6" name="test_div_1" time="0.002"></testcase><testcase classname="jzwpytest.test_div_1.TestBreakWork" file="jzwpytest\test_div_1.py" line="13" name="test_div_2" time="0.001"><failure message="ZeroDivisionError: division by zero">self = &lt;jzwpytest.test_div_1.TestBreakWork object at 0x000001A32E081548&gt;
+
+    def test_div_2(self):
+        &quot;&quot;&quot;
+        b=0
+        :return:
+        &quot;&quot;&quot;
+&gt;       assert div(1, 0) is None
+
+jzwpytest\test_div_1.py:19: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+a = 1, b = 0
+
+    def div(a, b):
+        # todo:健壮性、异常处理
+&gt;       return a / b
+E       ZeroDivisionError: division by zero
+
+jzwpytest\div.py:3: ZeroDivisionError</failure></testcase><testcase classname="jzwpytest.test_div_1.TestBreakWork" file="jzwpytest\test_div_1.py" line="20" name="test_div_3" time="0.002"></testcase><testcase classname="jzwpytest.test_div_1.TestBreakWork" file="jzwpytest\test_div_1.py" line="27" name="test_div_4" time="0.000"></testcase><testcase classname="jzwpytest.test_div_1.TestBreakWork" file="jzwpytest\test_div_1.py" line="34" name="test_div_5" time="0.001"></testcase><testcase classname="jzwpytest.test_div_1.TestBreakWork" file="jzwpytest\test_div_1.py" line="41" name="test_div_6" time="0.001"></testcase><testcase classname="jzwpytest.test_pytest" file="jzwpytest\test_pytest.py" line="11" name="test_answer" time="0.003"><failure message="assert 4 == 5
+ +  where 4 = inc(3)">def test_answer():
+&gt;       assert inc(3) == 5
+E       assert 4 == 5
+E        +  where 4 = inc(3)
+
+jzwpytest\test_pytest.py:13: AssertionError</failure></testcase><testcase classname="jzwpytest.test_pytest.TestDemo" file="jzwpytest\test_pytest.py" line="34" name="test_one" time="0.002"></testcase><testcase classname="jzwpytest.test_pytest.TestDemo" file="jzwpytest\test_pytest.py" line="38" name="test_two" time="0.002"><failure message="TypeError: hasattr expected 2 arguments, got 0">self = &lt;jzwpytest.test_pytest.TestDemo object at 0x000001A32E109688&gt;
+
+    def test_two(self):
+        x = &quot;hello&quot;
+&gt;       hasattr()
+E       TypeError: hasattr expected 2 arguments, got 0
+
+jzwpytest\test_pytest.py:41: TypeError</failure></testcase><testcase classname="jzwpytest.test_pytest.TestDemo" file="jzwpytest\test_pytest.py" line="44" name="test_x" time="0.002"></testcase></testsuite></testsuites>
