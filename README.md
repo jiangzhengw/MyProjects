@@ -23,7 +23,7 @@
     print('C:\\some\\name{x}\\{y}'.format(y=x, x=123))
     print(f'C:\\some\\name{x}')
 
-三、
+三、os
     # os.listdir()方法用于返回指定的文件夹包含的文件或文件夹的名字的列表,不包含./ ../
     # os.remove() 方法用于删除指定路径的文件。如果指定的路径是一个目录，将抛出OSError，在Unix, Windows中有效
     # os.system() 理解：https://www.cnblogs.com/cwp-bg/p/8465566.html
