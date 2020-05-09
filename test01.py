@@ -1,12 +1,13 @@
 # 导入队列包
 from collections import deque
 
+
 # 数字numbers
 # 字符串Strings
 # 列表List
 
 # 数字numbers
-# 反斜杠转移
+# 反斜杠转义
 print('C:\\some\\name')
 # r表示原生
 print(r'C:\some\name')

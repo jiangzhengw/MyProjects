@@ -40,11 +40,11 @@ class TestBreakWork:
         assert div(10, 'a')
         assert div('a', 10)
 
-    @pytest.mark.zero
+    @pytest.mark.exception
     def test_div_zero(self):
         with pytest.raises(ZeroDivisionError):
             div(10, 0)
 
-    @pytest.mark.fu
+    @pytest.mark.exception
     def test_div_fu(self):
         assert div(10, -1) == -10
