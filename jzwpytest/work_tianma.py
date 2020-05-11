@@ -51,15 +51,16 @@ def test_int_div(expected, a, b, title):
 @allure.title('{title}')
 @pytest.mark.parametrize('expected,a,b,precision,title', data_float)
 def test_float_div(expected, a, b, precision, title):
-    assert precision >= abs(div(a, b) - expected)  # 浮点数按照精度判断
+    # python abs() :  函数返回数字的绝对值
+    # assert precision >= abs(div(a, b) - expected)  # 浮点数按照精度判断
     assert pytest.approx(expected) == div(a, b)  # pytest提供的近似判断方法(默认精度1e-6)
-
 
 # 预期会报错的测试用例
 @allure.suite('报错数据组')
 @allure.title('{title}')
 @pytest.mark.parametrize('expected,a,b,title', data_error)
 def test_error_div(expected, a, b, title):
+    # python eval()
     with pytest.raises(eval(expected)):
         div(a, b)
 
@@ -67,9 +68,10 @@ def test_error_div(expected, a, b, title):
 # 进行旧测试数据的清理，测试报告的生成和展示
 if __name__ == "__main__":
     print(__file__)
-    print("-------------------------------12222222222")
+    # print("-------------------------------12222222222")
     # 清空allure_results文件夹，清理掉allure历史记录
     path = "jzwpytest/allure_results"
+    # os.listdir()方法用于返回指定的文件夹包含的文件或文件夹的名字的列表。
     for i in os.listdir(path):
         if os.listdir(path) != "":
             os.remove('{a}/{b}'.format(a=path, b=i))

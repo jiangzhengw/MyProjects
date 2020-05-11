@@ -1,3 +1,4 @@
+import allure
 import pytest
 
 from jzwpytest.div import div
@@ -7,7 +8,8 @@ from jzwpytest.div import div
 # 设置修改pycharm快捷键，ctrl+alt+s，搜索keymap，修改
 
 # pytest --junitxml=jzwpytest/result/junit.xml --alluredir=jzwpytest/allure_results jzwpytest
-# allure serve jzwpytest\allure_results
+# allure serve jzwpytest\allure_results 打开报告文件
+# allure generate jzwpytest\allure_html 在指定地址下生成一个HTML文件
 
 class TestBreakWork:
     # 注解实现分组执行
@@ -48,3 +50,5 @@ class TestBreakWork:
     @pytest.mark.exception
     def test_div_fu(self):
         assert div(10, -1) == -10
+        # allure + pytest 报告中插入图片方法，详细见allure官方文档
+        allure.attach.file('C:\\Users\\jiangzhw01\\Desktop\\12345.png', attachment_type=allure.attachment_type.PNG)

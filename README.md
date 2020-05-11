@@ -1,5 +1,9 @@
 "# MyHogwartsProjects"  
 知识点积累：  
+  
+  venv：包管理工具，会虚拟一个python环境  
+  pyenv ： python版本管理工具，等同于windows下手动切换环境变量  
+    
 一、  
     # 反斜杠转义  
     print('C:\\some\\name')  
