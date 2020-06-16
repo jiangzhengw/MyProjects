@@ -30,6 +30,7 @@ class TestBrowser(TestHogwarts):
         # 等待窗口出现
         self.wait(10, lambda x: len(self.driver.window_handles) > 1)
         self.driver.switch_to.window(self.driver.window_handles[1])
+
         self.driver.find_element(By.PARTIAL_LINK_TEXT, "演讲申请").click()
 
     def teardown_method(self):

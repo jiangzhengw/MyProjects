@@ -1,6 +1,7 @@
 # Time: 2020/6/15 14:18
 # Author: jiangzhw
 # FileName: test_hogwats.py
+import os
 import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -65,7 +66,18 @@ from selenium.webdriver.support.wait import WebDriverWait
 # todo:pycharm约定支持的一个标签，表示代办事项,可以在底部TODO窗口里代办的代码，便于查看需要编写的代码
 class TestHogwarts:
     def setup_method(self):
-        self.driver = webdriver.Chrome()
+
+        browser = os.getenv("browser")
+        print(browser)
+        if browser == "chrome":
+            self.driver = webdriver.Chrome()
+        elif browser == "firefox":
+            self.driver = webdriver.Firefox()
+        elif browser == "phantomjs":
+            self.driver = webdriver.PhantomJS()
+        else:
+            self.driver = webdriver.Chrome()
+
         self.driver.get("https://testerhome.com/")
         # 隐式等待，尽量不要用强制等待sleep()
         self.driver.implicitly_wait(5)
