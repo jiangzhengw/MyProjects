@@ -111,6 +111,21 @@ class TestHogwarts:
         # find_elements()返回多个element元素
         # self.driver.find_elements()
 
+    def test_question(self):
+        self.driver.get("https://testerhome.com/topics/21495")
+        # 有frame时，要先切换到frame才能找到
+        self.driver.switch_to.frame(0)
+        self.driver.find_element_by_link_text("提交").click()
+
+    def test_mstc2020(self):
+        self.driver.get("https://testerhome.com/topics/21805")
+        self.driver.find_element(By.PARTIAL_LINK_TEXT, "第六届中国互联网测试开发大会").click()
+        # 打印窗口信息
+        print(self.driver.window_handles)
+        # 切换到第二个窗口
+        self.driver.switch_to.window(self.driver.window_handles[1])
+        self.driver.find_element(By.PARTIAL_LINK_TEXT, "演讲申请").click()
+
     def teardown_method(self):
         time.sleep(5)
         self.driver.quit()
