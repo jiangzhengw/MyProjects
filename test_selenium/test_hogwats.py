@@ -7,6 +7,8 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 
+# 函数名上按ctrl可以快捷查看函数的参数
+
 # 主要元素定位方式
 """
     元素大体的加载过程：
@@ -48,10 +50,11 @@ from selenium.webdriver.support.wait import WebDriverWait
     
     默认的都是0.5s
     隐式等待：
-        跟客户端无关，客户端不会等待，传给服务端一个参数，服务端找不到元素时会进行等待
+        跟客户端无关，传了一个配置到服务端去执行等待，客户端不会等待，传给服务端一个参数，服务端找不到元素时会进行等待
         可以代替大量的强制等待
     
     显示等待：
+        客户端代码里的等待，python代码
         WebDriverWait(self.driver, 10).until(
                 expected_conditions.element_to_be_clickable(ele))
                 
@@ -66,6 +69,13 @@ class TestHogwarts:
         self.driver.get("https://testerhome.com/")
         # 隐式等待，尽量不要用强制等待sleep()
         self.driver.implicitly_wait(5)
+        # 初始化时定义一个通用的显示等待
+        # self.wait = WebDriverWait(self.driver, 10)
+
+    # 简单封装的一个等待方法
+    def wait(self, timeout, method):
+        # WebDriverWait默认等待时间 poll_frequency = 0.5
+        WebDriverWait(self.driver, timeout).until(method)
 
     def test_hogwarts(self):
         # css定位:
@@ -73,15 +83,19 @@ class TestHogwarts:
         self.driver.find_element_by_css_selector('a[href="/teams"]').click()
         # xPath定位
         # self.driver.find_element_by_xpath('//*[@id="main-nav-menu"]/ul/li[4]/a').click()
+
+        # time.sleep()
         # 间接css定位
         # self.driver.find_element(By.LINK_TEXT, "社团").click()
         # todo:显示等待
         # 尽量使用css定位元素，link text 有可能会导致解析元素的时候出现异常
 
-        # 定义一个元组存储复用的元素
+        # 定义一个元组存储需要复用的元素
         ele = (By.CSS_SELECTOR, '[data-name="霍格沃兹测试学院"]')
-        WebDriverWait(self.driver, 10).until(
-            expected_conditions.element_to_be_clickable(ele))
+        self.wait(10, expected_conditions.element_to_be_clickable(ele))
+        # 显示等待和隐式等待结合的灵活运用
+        # WebDriverWait(self.driver, 10).until(lambda x: self.driver.find_elements(ele) > 1)
+        # WebDriverWait(self.driver, 10).until(expected_conditions.element_to_be_clickable(ele))
         # element_to_be_clickable   等待元素可点击
         # presence_of_element_located   等待元素出现在Dom中
         # visibility_of_element_located 等待元素出现可以看见

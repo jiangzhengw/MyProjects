@@ -4,7 +4,11 @@ import time
 import json
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+
+# 实现鼠标相关的复杂操作
+from selenium.webdriver.common.actions import *
 from selenium.webdriver.common.action_chains import ActionChains
+
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.keys import Keys
@@ -32,6 +36,7 @@ class TestDefaultSuite():
         self.driver.set_window_size(1316, 784)
         # find_element找到节点后，返回一个element的对象，element对应有一些api操作
         self.driver.find_element(By.NAME, "q").click()
+        # 输入文字
         self.driver.find_element(By.NAME, "q").send_keys("appium")
         # 回车
         self.driver.find_element(By.NAME, "q").send_keys(Keys.ENTER)
