@@ -8,7 +8,17 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 
-# 函数名上按ctrl可以快捷查看函数的参数
+# 函数名焦点上按ctrl可以快捷查看函数的参数
+
+# headless模式，是一种无UI的浏览器模式，为了加速，用的最多的是Chrome headless,详细见Google
+
+# 1.setUp
+# 每个测试用例执行之前会执行
+# 2.setUpClass
+# 在每个测试类执行之前运行
+# 3.setUpMidule
+# 解决每个测试类开启关闭文件的问题
+# 在所有测试类在调用之前会被执行一次,函数名是固定写法,会被unittest等框架自动识别
 
 # 主要元素定位方式
 """
@@ -66,7 +76,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 # todo:pycharm约定支持的一个标签，表示代办事项,可以在底部TODO窗口里代办的代码，便于查看需要编写的代码
 class TestHogwarts:
     def setup_method(self):
-
+        # os.getenv()获取系统环境变量
         browser = os.getenv("browser")
         print(browser)
         if browser == "chrome":
@@ -105,6 +115,7 @@ class TestHogwarts:
         # 定义一个元组存储需要复用的元素
         ele = (By.CSS_SELECTOR, '[data-name="霍格沃兹测试学院"]')
         self.wait(10, expected_conditions.element_to_be_clickable(ele))
+
         # 显示等待和隐式等待结合的灵活运用
         # WebDriverWait(self.driver, 10).until(lambda x: self.driver.find_elements(ele) > 1)
         # WebDriverWait(self.driver, 10).until(expected_conditions.element_to_be_clickable(ele))
@@ -125,6 +136,8 @@ class TestHogwarts:
 
     def test_question(self):
         self.driver.get("https://testerhome.com/topics/21495")
+        # 收起浏览器窗口
+        self.driver.minimize_window()
         # 有frame时，要先切换到frame才能找到
         self.driver.switch_to.frame(0)
         self.driver.find_element_by_link_text("提交").click()
@@ -137,6 +150,20 @@ class TestHogwarts:
         # 切换到第二个窗口
         self.driver.switch_to.window(self.driver.window_handles[1])
         self.driver.find_element(By.PARTIAL_LINK_TEXT, "演讲申请").click()
+
+    # todo ：有时间看一下selenium driver 的一些 api
+    def test_js(self):
+        # todo : 专项测试的时候会讲如何获取性能
+        # driver.execute_script()可以再打开页面时执行一些js语句，获取一些属性值等,
+        # 需要加上return关键字返回js获取到的数据
+        res1 = self.driver.execute_script('return document.querySelector(".active").title')
+        print("\n")
+        for code in ['return document.title',
+                     'return document.querySelector(".active").action',
+                     'return document.querySelector(".active").className',
+                     'return JSON.stringify(performance.timing)']:
+            result = self.driver.execute_script(code)
+            print(result)
 
     def teardown_method(self):
         time.sleep(5)
