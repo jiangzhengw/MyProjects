@@ -86,7 +86,19 @@ class TestHogwarts:
         elif browser == "phantomjs":
             self.driver = webdriver.PhantomJS()
         else:
-            self.driver = webdriver.Chrome()
+            # 初始化webdriver options
+            options = webdriver.ChromeOptions()
+
+            # 使用 headless模式
+            # options.add_argument("--headless")
+            # options.add_argument("--disable-gpu")
+            # options.add_argument("--window-size=1280,1696")
+
+            # debugging 模式
+            # 使用已经存在的Chrome进程。
+            # 1、用于无法绕过登录等页面，可以直接在已有的进程内打开；2、也可以通过绕过cookie来实现
+            options.debugger_address = "127.0.0.1:9222"
+            self.driver = webdriver.Chrome(options=options)
 
         self.driver.get("https://testerhome.com/")
         # 隐式等待，尽量不要用强制等待sleep()
@@ -116,9 +128,10 @@ class TestHogwarts:
         ele = (By.CSS_SELECTOR, '[data-name="霍格沃兹测试学院"]')
         self.wait(10, expected_conditions.element_to_be_clickable(ele))
 
-        # 显示等待和隐式等待结合的灵活运用
+        # 显示等待和隐式等待结合的灵活运用和lambda
         # WebDriverWait(self.driver, 10).until(lambda x: self.driver.find_elements(ele) > 1)
         # WebDriverWait(self.driver, 10).until(expected_conditions.element_to_be_clickable(ele))
+
         # element_to_be_clickable   等待元素可点击
         # presence_of_element_located   等待元素出现在Dom中
         # visibility_of_element_located 等待元素出现可以看见
@@ -136,20 +149,25 @@ class TestHogwarts:
 
     def test_question(self):
         self.driver.get("https://testerhome.com/topics/21495")
-        # 收起浏览器窗口
-        self.driver.minimize_window()
         # 有frame时，要先切换到frame才能找到
         self.driver.switch_to.frame(0)
         self.driver.find_element_by_link_text("提交").click()
 
     def test_mstc2020(self):
         self.driver.get("https://testerhome.com/topics/21805")
+        # 收起浏览器窗口
+        self.driver.minimize_window()
         self.driver.find_element(By.PARTIAL_LINK_TEXT, "第六届中国互联网测试开发大会").click()
         # 打印窗口信息
         print(self.driver.window_handles)
         # 切换到第二个窗口
         self.driver.switch_to.window(self.driver.window_handles[1])
-        self.driver.find_element(By.PARTIAL_LINK_TEXT, "演讲申请").click()
+
+        # 截图方法
+        self.driver.save_screenshot("test.png")
+        element = (By.PARTIAL_LINK_TEXT, "演讲申请")
+        self.wait(10, expected_conditions.presence_of_element_located(element))
+        self.driver.find_element(*element).click()
 
     # todo ：有时间看一下selenium driver 的一些 api
     def test_js(self):
