@@ -77,8 +77,9 @@ from selenium.webdriver.support.wait import WebDriverWait
 class TestHogwarts:
     def setup_method(self):
         # os.getenv()获取系统环境变量
-        browser = os.getenv("browser")
-        print(browser)
+        # lower()将字符串转换为小写
+        browser = os.getenv("browser", "").lower()
+        print(f"browser is :{browser}")
         if browser == "chrome":
             self.driver = webdriver.Chrome()
         elif browser == "firefox":
@@ -97,8 +98,8 @@ class TestHogwarts:
             # debugging 模式
             # 使用已经存在的Chrome进程。
             # 1、用于无法绕过登录等页面，可以直接在已有的进程内打开；2、也可以通过绕过cookie来实现
-            options.debugger_address = "127.0.0.1:9222"
-            self.driver = webdriver.Chrome(options=options)
+            # options.debugger_address = "127.0.0.1:9222"
+            # self.driver = webdriver.Chrome(options=options)
 
         self.driver.get("https://testerhome.com/")
         # 隐式等待，尽量不要用强制等待sleep()
