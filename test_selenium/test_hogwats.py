@@ -30,14 +30,18 @@ from selenium.webdriver.support.wait import WebDriverWait
 
     主要元素定位方式：
     
-    元素定位要考虑到网页的加载速度，dom元素最先加载也就是document.query()等查询到的，就是css，最后是内容link text
-
+        定位优先使用id、name、class、tag name，其次使用css_selector，其次是Xpath，再是linktext
+    
+        元素定位要考虑到网页的加载速度，dom元素最先加载也就是document.query()等查询到的，就是css，最后是内容link text
+    
     XPath : 
+            遍历元素查找
+            
             driver.find_element_by_xpath('//*[@id="main-nav-menu"]/ul/li[4]/a')
             find_element_by_xpath("//*[@name='username'][@type='button']")
             
     CSS_SELECTOR :  
-            driver.find_element_by_css_selector('a[href="/teams"]').click()
+            css_selector：driver.find_element_by_css_selector('a[href="/teams"]').click()
             id : driver.find_element_by_id('loginForm')
             name : driver.find_element_by_name('username')
             tag name : driver.find_element_by_tag_name('h1')
@@ -61,7 +65,9 @@ from selenium.webdriver.support.wait import WebDriverWait
     
     默认的都是0.5s
     隐式等待：
-        跟客户端无关，传了一个配置到服务端去执行等待，客户端不会等待，传给服务端一个参数，服务端找不到元素时会进行等待
+        所有的findelement(),findelements()方法都会进行隐式等待
+        
+        隐式等待跟客户端无关，传了一个配置到服务端去执行等待，客户端不会等待，传给服务端一个参数，服务端找不到元素时会进行等待
         可以代替大量的强制等待
     
     显示等待：

@@ -36,4 +36,5 @@ class TestDemo(unittest.TestCase):
 if __name__ == '__main__':
     unittest.main()
 
-# 菜单栏code-reformat code 快捷键ctrl+alt+L格式化python代码
+# 菜单栏code-reformat code 快捷键ctrl+alt+L格式化python代码,可自定义
+# 优化代码无用导入：菜单栏Code Optimize import

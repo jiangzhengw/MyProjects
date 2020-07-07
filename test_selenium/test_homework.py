@@ -76,15 +76,20 @@ class TestHomeWork:
         self.driver.find_element_by_name("english_name").send_keys(english_name)
         self.driver.find_element_by_name("acctid").send_keys(userid)
 
-    def wait_add_ele(self, driver):
+    # todo : 对等待元素出现方法优化，适配多种点击，及等待的元素参数化
+    def wait_ele(self, driver):
+        """点击后等待某元素出现"""
         size = len(self.driver.find_elements(By.ID, "username"))
         if size < 1:
             self.driver.find_element(By.CSS_SELECTOR, ".js_has_member div:nth-child(1) .js_add_member").click()
         return size >= 1
 
     def test_homework(self):
+        """用例主体方法"""
         self.driver.find_element(By.ID, "menu_contacts").click()
-        WebDriverWait(self.driver, 10).until(self.wait_add_ele)
+
+        # 显示等待方法，可以循环执行一个方法，另外要注意传入的参数是方法名，不是方法，详细见api
+        WebDriverWait(self.driver, 10).until(self.wait_ele)
 
         # 出现网页按钮判断可点击了，但是点击后还是不跳转页面情况（网页按钮做了防自动化点击情况）可以使用循环点击
         # add_button = (By.CSS_SELECTOR, ".js_has_member div:nth-child(1) .js_add_member")
