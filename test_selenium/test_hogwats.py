@@ -104,8 +104,8 @@ class TestHogwarts:
             # debugging 模式
             # 使用已经存在的Chrome进程。
             # 1、用于无法绕过登录等页面，可以直接在已有的进程内打开；2、也可以通过绕过cookie来实现
-            # options.debugger_address = "127.0.0.1:9222"
-            # self.driver = webdriver.Chrome(options=options)
+            options.debugger_address = "127.0.0.1:9222"
+            self.driver = webdriver.Chrome(options=options)
 
         self.driver.get("https://testerhome.com/")
         # 隐式等待，尽量不要用强制等待sleep()
@@ -179,6 +179,7 @@ class TestHogwarts:
     # todo ：有时间看一下selenium driver 的一些 api
     def test_js(self):
         # todo : 专项测试的时候会讲如何获取性能
+
         # driver.execute_script()可以再打开页面时执行一些js语句，获取一些属性值等,
         # 需要加上return关键字返回js获取到的数据
         res1 = self.driver.execute_script('return document.querySelector(".active").title')

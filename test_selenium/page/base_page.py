@@ -5,6 +5,7 @@ from time import sleep
 
 from selenium import webdriver
 from selenium.webdriver.remote.webdriver import WebDriver
+from selenium.webdriver.remote.webelement import WebElement
 
 
 class BasePage:
@@ -12,15 +13,26 @@ class BasePage:
 
     # driver=None这样写系统会识别不到driver的类型从而没有方法提示，
     # 因此初始化的时候需要指定driver的类型
-    def __init__(self, driver: WebDriver = None):
+    # ide 按住ctrl可以查看变量的类型和方法的返回值类型等
+    def __init__(self, driver: WebDriver = None, resue=False):
         if driver is None:
-            self._driver = webdriver.Chrome()
+            if resue:
+                options = webdriver.ChromeOptions()
+                options.debugger_address = "127.0.0.1:9222"
+                self._driver = webdriver.Chrome(options=options)
+            else:
+                self._driver = webdriver.Chrome()
             self._driver.implicitly_wait(5)
             # _base_url在继承的类里初始化
             self._driver.get(self._base_url)
         else:
             self._driver = driver
 
+    def find(self, locator):
+        """查找元素"""
+        return self._driver.find_element(*locator)
+
     def close_page(self):
+        """关闭页面"""
         sleep(10)
         self._driver.quit()

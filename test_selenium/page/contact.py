@@ -3,18 +3,25 @@
 # FileName: contact.py
 from selenium.webdriver.common.by import By
 
+from test_selenium.page.base_page import BasePage
 
-class Contact:
+
+class Contact(BasePage):
     """通讯录页面PO"""
-
-    _add_member_button = (By.CSS, "xxx")
+    _add_member_button = (By.CSS_SELECTOR, "xxx")
 
     def add_member(self, data):
         """添加成员"""
-        # self.driver.find_element("xxxx")
-        # send_keys()
-        # click_save()
-        pass
+        name = (By.NAME, "username")
+        english_name = (By.NAME, "memberAdd_english_name")
+        acctid = (By.NAME, "acctid")
+        mobile = (By.NAME, "mobile")
+
+        self.find(name).send_keys("测试姜")
+        self.find(english_name).send_keys("Ethan")
+        self.find(acctid).send_keys("1111122222")
+        self.find(mobile).send_keys("19999999999")
+        return self
 
     def search(self, name):
         """查找成员"""

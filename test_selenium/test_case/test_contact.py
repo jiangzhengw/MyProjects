@@ -8,4 +8,3 @@ class TestContact:
     def test_add_member(self):
         contact = Contact()
         contact.add_member("xxx")
-        
