@@ -13,11 +13,11 @@ class Main(BasePage):
 
     def add_member(self):
         """添加成员"""
-        locator = (By.LINK_TEXT, "添加成员")
-        self.find(locator).click()
+        locator = (By.LINK_TEXT, '添加成员')
+        # self.find(locator).click()
         # 原生点击无法处理，可以调用js点击实现
-        self._driver.execute_script("argument[0].click();", self.find(locator))
-        return Contact()
+        self._driver.execute_script("arguments[0].click();", self.find(locator))
+        return Contact(reuse=True)
 
     def add_member_error(self):
         """添加成员失败"""
@@ -44,3 +44,7 @@ class Main(BasePage):
     def get_massage(self):
         """了解详情"""
         return "aaa"
+
+    def send_massage(self):
+        pass
+

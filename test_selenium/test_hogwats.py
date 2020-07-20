@@ -135,7 +135,7 @@ class TestHogwarts:
         ele = (By.CSS_SELECTOR, '[data-name="霍格沃兹测试学院"]')
         self.wait(10, expected_conditions.element_to_be_clickable(ele))
 
-        # 显示等待和隐式等待结合的灵活运用和lambda
+        # 显示等待和隐式等待结合的灵活运用：lambda表达式
         # WebDriverWait(self.driver, 10).until(lambda x: self.driver.find_elements(ele) > 1)
         # WebDriverWait(self.driver, 10).until(expected_conditions.element_to_be_clickable(ele))
 
