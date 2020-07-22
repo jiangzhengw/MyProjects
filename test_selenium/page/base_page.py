@@ -33,9 +33,12 @@ class BasePage:
         if self._base_url != "":
             self._driver.get(self._base_url)
 
-    def find(self, locator):
+    def find(self, by, locator):
         """查找元素"""
-        return self._driver.find_element(*locator)
+        if isinstance(by, tuple):
+            return self._driver.find_element(*locator)
+        else:
+            return self._driver.find_element(locator)
 
     def finds(self, locator, index):
         """查找多个元素"""
