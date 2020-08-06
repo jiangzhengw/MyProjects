@@ -35,6 +35,7 @@ class BasePage:
 
     def find(self, by, locator):
         """查找元素"""
+        # 判断元素是否是一个一直类型
         if isinstance(by, tuple):
             return self._driver.find_element(*locator)
         else:
