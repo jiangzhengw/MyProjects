@@ -17,9 +17,10 @@ class TestXueQiu:
     def setup(self):
         caps = {}
         caps["platformName"] = "Android"
-        caps["automationName"] = "UiAutomator2"
         caps["appPackage"] = "com.xueqiu.android"
         caps["appActivity"] = ".view.WelcomeActivityAlias"
+
+        caps["automationName"] = "UiAutomator2"
         caps["noReset"] = "true"
         caps["dontStopAppOnReset"] = "true"
         # caps["fullRest"] = "true"
