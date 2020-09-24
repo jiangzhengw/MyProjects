@@ -15,7 +15,6 @@ class TestApi:
         caps["platformName"] = "Android"
         caps["appPackage"] = "io.appium.android.apis"
         caps["appActivity"] = ".ApiDemos"
-
         caps["automationName"] = "UiAutomator2"
         caps["noReset"] = "true"
         # caps["dontStopAppOnReset"] = "true"
@@ -40,7 +39,11 @@ class TestApi:
         self.driver.find_element(*scroll_to_element).click()
         self.driver.find_element(By.XPATH, "//*[@text='Make a Popup!']").click()
         self.driver.find_element(By.XPATH, "//*[@text='Search']").click()
+        toast = self.driver.find_element(By.XPATH, "//*[@class='android.widget.Toast']").text
+        assert "Search" in toast
+        # assert "Clicked" not in toast
 
     def teardown(self):
-        sleep(10)
-        self.driver.quit()
+        pass
+        # sleep(10)
+        # self.driver.quit()
