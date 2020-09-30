@@ -11,6 +11,8 @@ from appium import webdriver
 from appium.webdriver.common.mobileby import MobileBy
 from appium.webdriver.common.touch_action import TouchAction
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as ec
+from selenium.webdriver.support.wait import WebDriverWait
 
 
 class TestXueQiu:
@@ -93,6 +95,12 @@ class TestXueQiu:
         # 获取控件的属性
         # self.driver.find_element(*ele).get_property()  # 适用于html
         print(self.driver.find_element(*ele).get_attribute(frame_name))  # 适用于app
+
+    def test_webview(self):
+        self.driver.find_element(By.XPATH, "//*[@text='交易' and contains(@resource-id,'tab_name') ]").click()
+        self.driver.find_element(MobileBy.ACCESSIBILITY_ID, "A股开户").click()
+        # 显示等待,但是定位webview控件会出问题，所以需要切换到webview后定位，或者适当加上死等
+        WebDriverWait(self.driver).until(ec.visibility_of_element_located())
 
     def teardown(self):
         sleep(10)

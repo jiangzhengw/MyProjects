@@ -37,7 +37,11 @@ class TestApi:
                              '.scrollable(true).instance(0)).scrollIntoView(new UiSelector()'
                              '.text("Popup Menu").instance(0));')
         self.driver.find_element(*scroll_to_element).click()
-        self.driver.find_element(By.XPATH, "//*[@text='Make a Popup!']").click()
+        # Xpath定位
+        # self.driver.find_element(By.XPATH, "//*[@text='Make a Popup!']").click()
+        # id定位指向resouce-id，ACCESSIBILITY_ID指向的是content-description_id
+        # 一般情况下，无法使用id和accessibility_id定位的情况下再使用test文本定位
+        self.driver.find_element(MobileBy.ACCESSIBILITY_ID, "Make a Popup!").click()
         self.driver.find_element(By.XPATH, "//*[@text='Search']").click()
         toast = self.driver.find_element(By.XPATH, "//*[@class='android.widget.Toast']").text
         assert "Search" in toast
