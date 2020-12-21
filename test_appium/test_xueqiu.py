@@ -24,13 +24,11 @@ class TestXueQiu:
 
         caps["automationName"] = "UiAutomator2"
         caps["noReset"] = "true"
-        caps["dontStopAppOnReset"] = "true"
+        # caps["dontStopAppOnReset"] = "true"
         # caps["fullRest"] = "true"
-        caps["unicodeKeyboard"] = "true"
-        caps["resetKeyboard"] = "true"
-
+        # caps["unicodeKeyboard"] = "true"
+        # caps["resetKeyboard"] = "true"
         self.driver = webdriver.Remote("http://localhost:4723/wd/hub", caps)
-
         self.driver.implicitly_wait(8)
 
     def test_search(self):
@@ -101,6 +99,20 @@ class TestXueQiu:
         self.driver.find_element(MobileBy.ACCESSIBILITY_ID, "A股开户").click()
         # 显示等待,但是定位webview控件会出问题，所以需要切换到webview后定位，或者适当加上死等
         WebDriverWait(self.driver).until(ec.visibility_of_element_located())
+        # Todo:webview组件send_keys()不生效，原因调查
+
+    def test_webview_content(self):
+        self.driver.find_element(By.XPATH, "//*[@text='交易' and contains(@resource-id,'tab_name') ]").click()
+        for i in range(5):
+            print(self.driver.contexts)
+            sleep(1)
+        print(self.driver.page_source)
+        self.driver.switch_to.default_content(self.driver.contexts[-1])
+        for i in range(5):
+            print(self.driver.window_handles)
+            sleep(1)
+        self.driver.switch_to.window(self.driver.window_handles[-1])
+        print(self.driver.page_source)
 
     def teardown(self):
         sleep(10)
