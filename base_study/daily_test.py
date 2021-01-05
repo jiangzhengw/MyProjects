@@ -2,20 +2,24 @@
 # Author: jiangzhw
 # FileName: daily_test.py
 
-# 字符串反转输出
+# 字符串/整型的反转输出
 
 # 切片：
 # arr [start: end: step]
 # 左闭右开区间
 # start 缺省表示 从最左边 index = 0 开始
 # end 缺省表示 取到最右边 index = len(arr) - 1
-# step 缺省表示 步长为 +1
+# step 缺省表示 步长为 +1x
 strs = '1234567890'
+i = 120093883
 print(strs[::-1])
-
+print(str(i)[::-1])
 l = list(strs)
+l2 = list(str(i))
 l.reverse()
+l2.reverse()
 print(''.join(l))
+print(''.join(l2))
 
 print("---------------")
 # 打印列表基数偶数下标
@@ -343,3 +347,18 @@ def compareVersion(version1: str, version2: str) -> int:
 version1 = "1.2.3.127"
 version2 = "1.2.4.145"
 print(compareVersion(version1, version2))
+
+
+# 对一个整数进行翻转
+def reverse(self, x: int) -> int:
+    if x < 0:
+        x *= -1
+        a = str(x)[::-1]
+        b = int(a) * -1
+
+    else:
+        a = str(x)[::-1]
+        b = int(a)
+
+    return b
+

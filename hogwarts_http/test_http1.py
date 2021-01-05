@@ -122,6 +122,7 @@ class TestDemo:
         print(jsonpath.jsonpath(r.json(), '*..name'))
         assert_that(r.json()["category_list"]["categories"][0]["name"], equal_to("开源项目"))
 
+    # 用于判断增量的接口变化，不过复杂的规则需要自己去实现判断策略
     def test_get_jsonschema(self):
         # Todo：可手工生成schema，也可自动生成schema
         url = "https://ceshiren.com/categories.json"
