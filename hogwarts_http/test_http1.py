@@ -77,7 +77,7 @@ class TestDemo:
     # r.text = r.encoding + r.content 返回编码解析的结果，可以通过r.encoding = 'gbk'来变更解码方式
     # r.content 返回二进制结果
     # r.json() = r.encoding + r.content + content type json 返回JSON格式，可能抛出异常
-    # r.raw.read(10) 返回原始socket respons，需要加参数stream=True
+    # r.raw.read(10) 返回原始socket response，需要加参数stream=True
     def test_header(self):
         r = requests.get('http://httpbin.testing-studio.com/get', headers={"h": "header test"})
         print(r.content)
@@ -129,3 +129,26 @@ class TestDemo:
         data = requests.get(url).json()
         schema = json.load(open("topic_schema.json"))
         validate(data, schema=schema)
+
+    # header and cookie
+    def test_demo01(self):
+        url = "http://httpbin.testing-studio.com/cookies"
+        header = {
+            'User-Agent': 'hogwarts'
+        }
+        cookie_data = {
+            'hogwarts': 'school',
+            'name': 'jiangzhw'
+        }
+        res = requests.get(url=url, headers=header, cookies=cookie_data)
+        print(res.request.headers)
+
+    # auth
+    def test_auth(self):
+        url = "http://httpbin.testing-studio.com/basic-auth/admin/admin"
+        auth = {
+            'user': 'admin',
+            'passwd': 'admin'
+        }
+        res = requests.get(url=url, auth=auth)
+        print(res.request.auth)
