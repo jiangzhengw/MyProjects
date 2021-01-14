@@ -1,6 +1,6 @@
 # Time: 2020/12/9 19:47
 # Author: jiangzhw
-# FileName: test_http1.py
+# FileName: test_http.py
 import json
 
 # 将已编码的json字符串解码成python对象
@@ -143,12 +143,9 @@ class TestDemo:
         res = requests.get(url=url, headers=header, cookies=cookie_data)
         print(res.request.headers)
 
-    # auth
+    # auth 参数传递认证信息
     def test_auth(self):
+        from requests.auth import HTTPBasicAuth
         url = "http://httpbin.testing-studio.com/basic-auth/admin/admin"
-        auth = {
-            'user': 'admin',
-            'passwd': 'admin'
-        }
-        res = requests.get(url=url, auth=auth)
-        print(res.request.auth)
+        res = requests.get(url=url, auth=HTTPBasicAuth('admin', 'admin'))
+        print(res)

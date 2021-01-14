@@ -26,30 +26,33 @@ def all_path(dirname):
             result.append(apath)
     return result
 
+file_result = []
+
+for root, dirs, files in os.walk(root_dir):
+    for name in files:
+        # dir1 = os.path.join(root_dir, dir)
+        file_result.append(name)
+    for name in dirs:
+        # dir2 = os.path.join(root_dir, dir)
+        file_result.append(name)
+
+print(file_result)
+"""
 result = []
-for dir in os.listdir(path):  # 遍历当前目录所有文件和目录
-    child = os.path.join(path, dir)  # 加上路径，否则找不到
+for dir in os.listdir(root_dir):  # 遍历当前目录所有文件和目录
+    child = os.path.join(root_dir, dir)  # 加上路径，否则找不到
     # print(child)
     if child.endswith(".air"):
+        dir = os.path.join(root_dir, dir)
         result.append(dir)
     if os.path.isdir(child):  # 如果是目录，则继续遍历子目录的文件
         for file in os.listdir(child):
             if file.endswith(".air"):
                 # if os.path.splitext(file)[1] == '.air':  # 分割文件名和文件扩展名，并且扩展名为'air'
-                # file = os.path.join(child, file)  # 同样要加上路径
+                file = os.path.join(child, file)  # 同样要加上路径
                 result.append(file)
     # elif os.path.isfile(child):  # 如果是文件，则直接判断扩展名
     #     if child.endswith(".air"):
     #         if os.path.splitext(child)[1] == '.air':
             # result.append(child)
 print(result)
-"""
-file_result = []
-
-for root, dirs, files in os.walk(root_dir):
-    for name in files:
-        file_result.append(name)
-    for name in dirs:
-        file_result.append(name)
-
-print(file_result)
