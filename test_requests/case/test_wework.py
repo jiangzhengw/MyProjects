@@ -3,6 +3,8 @@
 # FileName: test_wework.py
 import re
 import pytest
+from pip._vendor import requests
+
 from test_requests.api.wework import WeWork
 
 
@@ -31,7 +33,7 @@ class TestWeWork:
     def test_we_work(self, user_id, mobile, name):
         """
         testing all of the wework
-        interface integration testings
+        interface integration testings(集成测试)
         :return:
         """
         # done : 少量数据参数化处理
@@ -55,7 +57,13 @@ class TestWeWork:
 
     def test_demo(self, token):
         """
-        test fun()
-        po idea
+        test fun
+        po idea and data driven use
         """
-        self.main.create_member("beijita", "17800010001", "贝吉塔")
+        print(self.main.create_member("beijita", "17800010001", "贝吉塔"))
+
+    def test_session(self, token):
+        s = requests.session()
+        s.params = {"access_token": token}
+        res = s.get("https://qyapi.weixin.qq.com/cgi-bin/user/get?userid=beijita")
+        print(res.json())

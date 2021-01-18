@@ -2,6 +2,7 @@
 # Author: jiangzhw
 # FileName: wework.py
 import requests
+import yaml
 
 from test_requests.api.base_api import BaseApi
 from test_requests.api.utils import get_token
@@ -12,6 +13,9 @@ class WeWork(BaseApi):
 
     def __init__(self):
         self.token = get_token()
+        self.params["token"] = self.token
+        with open(r"D:\PythonPro\Hogwars01\test_requests\data\wework.yml", encoding="utf-8") as f:
+            self.data = yaml.load(f)
 
     def create_member(self, user_id, mobile, name, department=None):
         """
@@ -19,20 +23,26 @@ class WeWork(BaseApi):
         :return:
         """
         if department is None:
-            department = [1]
-        url = f"https://qyapi.weixin.qq.com/cgi-bin/user/create?access_token={self.token}"
+            department = "1"
         # r = requests.post(url, json=res_body)
-        data = {
-            "method": "post",
-            "url": url,
-            "json": {
-                "userid": user_id,
-                "name": name,
-                "mobile": mobile,
-                "department": department
-            }
-        }
-        return self.send(data)
+        # data = {
+        #     "method": "post",
+        #     "url": url,
+        #     "json": {
+        #         "userid": user_id,
+        #         "name": name,
+        #         "mobile": mobile,
+        #         "department": department
+        #     }
+        # }
+
+        # TODO: 数据驱动
+        self.params["user_id"] = user_id
+        self.params["mobile"] = mobile
+        self.params["name"] = name
+        self.params["department"] = department
+
+        return self.send(self.data["create"])
 
     def update_member(self, user_id, name=None):
         """

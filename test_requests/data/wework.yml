@@ -1,0 +1,9 @@
+create:
+  "method": "post"
+  "url": "https://qyapi.weixin.qq.com/cgi-bin/user/create?access_token=${token}"
+  "json":
+    "userid": ${user_id}
+    "name": ${name}
+    "mobile": ${mobile}
+    "department":
+      - ${department}
