@@ -1,0 +1,28 @@
+login:
+  -
+    - name1
+    - pwd1
+  -
+    - name2
+    - pwd2
+message:
+  -
+    - uid1
+    - icon1
+    - address1
+  - - uid2
+    - icon2
+    - address2
+demo:
+  -
+    - id1
+    - name1
+    - email1
+  -
+    - id2
+    - name2
+    - email2
+  -
+    - id3
+    - name3
+    - email3
