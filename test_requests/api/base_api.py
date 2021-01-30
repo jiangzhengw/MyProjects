@@ -15,7 +15,9 @@ class BaseApi:
         :return:
         """
         raw_data = json.dumps(data)
+        print(raw_data)
         for key, value in self.params.items():
             raw_data = raw_data.replace("${" + key + "}", value)
         data = json.loads(raw_data)
+        print(data)
         return requests.request(**data).json()

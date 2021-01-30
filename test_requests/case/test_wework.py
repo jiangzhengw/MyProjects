@@ -3,7 +3,7 @@
 # FileName: test_wework.py
 import re
 import pytest
-from pip._vendor import requests
+import requests
 
 from test_requests.api.wework import WeWork
 

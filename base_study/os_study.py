@@ -54,5 +54,5 @@ for dir in os.listdir(root_dir):  # 遍历当前目录所有文件和目录
     # elif os.path.isfile(child):  # 如果是文件，则直接判断扩展名
     #     if child.endswith(".air"):
     #         if os.path.splitext(child)[1] == '.air':
-            # result.append(child)
+    # result.append(child)
 print(result)

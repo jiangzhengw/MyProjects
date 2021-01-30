@@ -1,6 +1,8 @@
 # Time: 2021/1/27 17:07
 # Author: jiangzhw
 # FileName: test_demo.py
+import json
+
 import openpyxl
 import pytest
 import yaml
@@ -68,3 +70,27 @@ class TestDemo:
         print('第1行第2列值', cell_2_3)
         max_row = worksheet.max_row
         print('最大行', max_row)
+
+    # json 四种方法：
+    # loads：将string转换为dict
+    # dumps：将dict转换为string
+    # load：将json格式字符串转换为dict
+    # dump：将dict转换为json格式字符串
+    def test_json1(self):
+        with open(r"D:\PythonPro\Hogwars01\data_parametrize_study\data.json",
+                  "r", encoding="utf-8") as f:
+            data = json.load(f)
+            print(data)
+            # print(data[0])
+            print(data["user1"])
+
+    def test_txt1(self):
+        with open(r"D:\PythonPro\Hogwars01\data_parametrize_study\data.txt",
+                  "r", encoding="utf-8") as f:
+            data = pd.read_table(f, header=None, sep=" ")
+            # data = data.head(1).dropna(inplace=True)
+            print(data.drop(index=[0]))
+            print(type(data))
+            print(data)
+            # print(data.head(1))
+            # print(data[1])
