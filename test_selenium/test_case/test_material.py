@@ -13,7 +13,7 @@ class TestMaterial:
 
     def test_material(self):
         self.manage_tools.goto_material().switch_to_image().add_image(
-            r"D:\PythonPro\Hogwars01\test_selenium\weixinbg.jpg")
+            r"D:\PythonPro\MyProjects\test_selenium\weixinbg.jpg")
 
     def teardown(self):
         sleep(10)

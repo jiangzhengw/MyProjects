@@ -13,13 +13,13 @@ import pandas as pd
 class TestDemo:
 
     @pytest.mark.parametrize("userid,name,email",
-                             yaml.load(open(r"D:\PythonPro\Hogwars01\data_parametrize_study\data.yml",
+                             yaml.load(open(r"D:\PythonPro\MyProjects\data_parametrize_study\data.yml",
                                             encoding="utf_8"))["demo"])
     def test_yaml1(self, userid, name, email):
         print(f"\nid:{userid}\nname:{name}\nemail:{email}")
 
     def test_yaml2(self):
-        with open(r"D:\PythonPro\Hogwars01\data_parametrize_study\data.yml",
+        with open(r"D:\PythonPro\MyProjects\data_parametrize_study\data.yml",
                   encoding="utf_8") as f:
             data = yaml.load(f)
         # print(data)
@@ -77,7 +77,7 @@ class TestDemo:
     # load：将json格式字符串转换为dict
     # dump：将dict转换为json格式字符串
     def test_json1(self):
-        with open(r"D:\PythonPro\Hogwars01\data_parametrize_study\data.json",
+        with open(r"D:\PythonPro\MyProjects\data_parametrize_study\data.json",
                   "r", encoding="utf-8") as f:
             data = json.load(f)
             print(data)
@@ -85,7 +85,7 @@ class TestDemo:
             print(data["user1"])
 
     def test_txt1(self):
-        with open(r"D:\PythonPro\Hogwars01\data_parametrize_study\data.txt",
+        with open(r"D:\PythonPro\MyProjects\data_parametrize_study\data.txt",
                   "r", encoding="utf-8") as f:
             data = pd.read_table(f, header=None, sep=" ")
             # data = data.head(1).dropna(inplace=True)

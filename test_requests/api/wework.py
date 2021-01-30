@@ -14,7 +14,7 @@ class WeWork(BaseApi):
     def __init__(self):
         self.token = get_token()
         self.params["token"] = self.token
-        with open(r"D:\PythonPro\Hogwars01\test_requests\data\wework.yml", encoding="utf-8") as f:
+        with open(r"D:\PythonPro\MyProjects\test_requests\data\wework.yml", encoding="utf-8") as f:
             self.data = yaml.load(f)
 
     def create_member(self, user_id, mobile, name, department=None):
