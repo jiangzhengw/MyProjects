@@ -12,7 +12,7 @@ from mitmproxy import http
 # url 存储在 flow变量的request属性中
 def request(flow: http.HTTPFlow):
     if "baidu.com" in flow.request.pretty_url:
-        with open(r"D:\PythonPro\Hogwars01\mitmpro\temp.json", encoding="utf-8") as f:
+        with open(r"D:\PythonPro\MyProjects\mitmpro\temp.json", encoding="utf-8") as f:
             flow.response = http.HTTPResponse.make(
                 200,  # (optional) status code
                 f.read(),

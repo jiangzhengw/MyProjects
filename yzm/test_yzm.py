@@ -38,9 +38,9 @@ class TestYZM:
 
     def get_pictures(self):
         # 整个页面截图的图片存放路径
-        shutil.rmtree(r'D:\PythonPro\Hogwars01\yzm\picture')
-        os.mkdir(r'D:\PythonPro\Hogwars01\yzm\picture')
-        self.driver.save_screenshot(r'D:\PythonPro\Hogwars01\yzm\picture\poo1.png')
+        shutil.rmtree(r'D:\PythonPro\MyProjects\yzm\picture')
+        os.mkdir(r'D:\PythonPro\MyProjects\yzm\picture')
+        self.driver.save_screenshot(r'D:\PythonPro\MyProjects\yzm\picture\poo1.png')
         # id是验证码在页面上的id
         WebDriverWait(self.driver, 10).until(
             expected_conditions.element_to_be_clickable((By.CSS_SELECTOR, 'img[src="/include/code/code.php?u=1"]')))
@@ -50,12 +50,12 @@ class TestYZM:
         top = pg.location['y']
         right = pg.size['width'] + left
         height = pg.size['height'] + top
-        im = Image.open(r'D:\PythonPro\Hogwars01\yzm\picture\poo1.png')
+        im = Image.open(r'D:\PythonPro\MyProjects\yzm\picture\poo1.png')
         image_obj = im.crop((left, top, right, height))
         # 验证码截图的图片存放路径
-        image_obj.save(r'D:\PythonPro\Hogwars01\yzm\picture\poo2.png')
+        image_obj.save(r'D:\PythonPro\MyProjects\yzm\picture\poo2.png')
         images = image_obj.convert("L")  # 转灰度
-        images.save(r'D:\PythonPro\Hogwars01\yzm\picture\poo3.png')
+        images.save(r'D:\PythonPro\MyProjects\yzm\picture\poo3.png')
         """
         pixdata = images.load()
         w, h = images.size

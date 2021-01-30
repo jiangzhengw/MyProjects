@@ -38,7 +38,7 @@ def reboot():  # 封装
     print("adb reboot success!")
 
 
-# os.system('cd D://PythonPro//Hogwars01//base_study')
+# os.system('cd D://PythonPro//MyProjects//base_study')
 # os.mkdir('aaa.txt')
 # reboot()
 
