@@ -23,8 +23,7 @@ print(''.join(l2))
 
 print("---------------")
 # 打印列表基数偶数下标
-print("奇数下标" + strs[::2])
-print("偶数下标" + strs[1::2])
+
 
 print("---------------")
 # 列表去重改变原列表的顺序了
@@ -46,7 +45,7 @@ print(dict(zip(list1, list2)))
 # 正则表达式替换（字符串中数字乘以2）
 import re
 
-ss = 'adafasw12314egrdf523.6qew'
+ss = 'adafasw12314egrdf523.6qew123.111'
 num = re.findall('\d+', ss)
 res = re.findall('\d+\.?\d*', ss)
 print(num)
@@ -55,37 +54,37 @@ print(res)
 print(new_list)
 new_list = [float(i) * 2 for i in list(res)]
 print(new_list)
-
 print("---------------")
 
 
 # 将列表中的异位词分组
 
-def group_anagrams(strs):
+def group_anagrams(l: list):
     # 思路：处理过程用map进行保存；key和value值分别对应 字母的从小到大排列值 和 strs中的真实值
-    list1 = {}
+    d1 = {}
     # sort是应用在list上的方法，sorted可以对所有可迭代的对象进行排序操作,保留原列表
-    for i in range(len(strs)):
+    for i in range(len(l)):
         # print(strs[i])
         # print(sorted(strs[i]))
         # Python join()方法用于将序列中的元素以指定的字符连接生成一个新的字符串。
-        tmp = ''.join(sorted(strs[i], reverse=True))
+        tmp = ''.join(sorted(l[i], reverse=True))
         # print(tmp)
-        if tmp in list1:
+        if tmp in d1:
             # 如果已存在就追加
-            list1[tmp].append(strs[i])
+            d1[tmp].append(l[i])
         else:
             # print("1111")
             # 如果未存在就创建一个key value
-            list1[tmp] = [strs[i]]
+            d1[tmp] = [l[i]]
     # print(map_)
-    return [v for v in list1.values()]
+    return [v for v in d1.values()]
 
 
 strs = ["eat", "tea", "tan", "ate", "nat", "bat"]
 print(group_anagrams(strs))
 
 
+# 判断字符串是否对称
 def is_symmetric1(strs):
     str1 = list(strs)
     str2 = list(strs)
@@ -124,7 +123,6 @@ def bubble_sort(arr):
         arr2 = []
         arr = re.findall('\d+', arr)
         print(arr)
-        print("hhhhh")
         for i in range(len(arr)):
             arr2.append(int(arr[i]))
         n = len(arr2)
@@ -156,7 +154,7 @@ print(bubble_sort(strs))
 # 100-199之间 | 200-249之间 | 250-255 之间| 10-99之间| 0-9 之间
 # \. 反斜杠表示转义
 # 25[0-5]|2[0-4]\d|[01]?\d\d?
-# 250-255 | 200-249 | 00-199
+# 250-255 | 200-249 | 1-199
 # ?	匹配前面的子表达式零次或一次，或指明一个非贪婪限定符。要匹配 ? 字符，请使用 \?。
 def checkip1(ip):
     p = re.compile(
@@ -229,13 +227,12 @@ def binary_search(my_list, num):
     """
     low = 0
     high = len(my_list)
-    my_list.sort()
-    print(my_list)
+    tem = sorted(my_list)
     while low <= high:
         mid = int((low + high) / 2)
-        guess = my_list[mid]
-        if guess == num:
-            return mid
+        gress = tem[mid]
+        if gress == num:
+            return my_list.index(tem[mid])
         elif guess > num:
             # 说明猜大了
             high = mid - 1
@@ -250,7 +247,7 @@ guess = 29
 print(binary_search(my_list, guess))
 
 
-# 有相同值的二分查找 python
+# TODO:有相同值的二分查找 python
 
 # 题目描述
 # 请实现有重复数字的有序数组的二分查找。
@@ -281,21 +278,31 @@ def upper_bound_(n, v, a):
     return l + 1
 
 
-print(upper_bound_(5, 4, [1, 2, 4, 4, 5]))
-print(binary_search([1, 2, 4, 4, 5], 4))
+print(upper_bound_(7, 2, [1, 1, 2, 2, 3, 4, 5]))
+print(binary_search([1, 1, 2, 2, 3, 4, 5], 2))
 
 # 计算字符串内各字符重复次数，并列出排名前五的字符
 string = "a a a b c d c z a b x ss"
 # 字典表达式
-res = {a: string.count(a) for a in list(string.replace(' ', ''))}
+tmp = {a: string.count(a) for a in list(string.replace(' ', ''))}
+res = {}
+for i in range(5 - 1):
+    print(list(tmp.keys())[i])
+    print(list(tmp.values())[i])
+    res[list(tmp.keys())[i]] = list(tmp.values())[i]
 print(res)
 
 
-# 快速排序
+# 快速排序:思想
+# 快速排序使用分治的思想，通过一趟排序将待排序列分割成两部分，其
+# 中一部分记录的关键字均比另一部分记录的关键字小。之后分别对这两
+# 部分记录继续进行排序，以达到整个序列有序的目的。
 def quicksort(arr):
     if len(arr) <= 1:
         return arr
+    # // 双反斜杠表示向下取整
     pivot = arr[len(arr) // 2]
+    # pivot = arr[int(len(arr) / 2)]
     # 列表表达式
     left = [x for x in arr if x < pivot]
     middle = [x for x in arr if x == pivot]
@@ -315,7 +322,7 @@ print(l[:-2])
 
 # 比较两个版本号大小1.2.3.127，1.2.4.145，返回版本号较大的
 # version1 > version2返回1，如果version1 < version2返回 - 1， 除此之外返回0。
-def compareVersion(version1: str, version2: str) -> int:
+def compare_version(version1: str, version2: str) -> int:
     if not version1 and version2:
         return -1
     if version1 and not version2:
@@ -346,11 +353,12 @@ def compareVersion(version1: str, version2: str) -> int:
 
 version1 = "1.2.3.127"
 version2 = "1.2.4.145"
-print(compareVersion(version1, version2))
+print(compare_version(version1, version2))
 
 
 # 对一个整数进行翻转
-def reverse(self, x: int) -> int:
+# todo:多种方法考虑
+def reverse(x: int) -> int:
     if x < 0:
         x *= -1
         a = str(x)[::-1]
@@ -362,3 +370,20 @@ def reverse(self, x: int) -> int:
 
     return b
 
+
+# 字典排序
+# 按 值 排序
+# sorted函数按key值对字典排序
+# 先来基本介绍一下sorted函数，sorted(iterable,key,reverse)，sorted一共有
+# iterable,key,reverse这三个参数。其中iterable表示可以迭代的对象，例如可以
+# 是dict.items()、dict.keys()等，key是一个函数，用来选取参与比较的元素，
+# r everse则是用来指定排序是倒序还是顺序，reverse=true则是倒序，
+# reverse=false时则是顺序，默认时reverse=false。
+dic = {"a": 5, "b": 2, "c": 3, "d": 4, "e": 1}
+print(dic.keys())
+print(dic.values())
+print(dic.items())
+print(sorted(dic.keys()))
+print(sorted(dic.values()))
+# todo:lambda表达式学习
+print(sorted(dic.items(), key=lambda item: item[1], reverse=True))
