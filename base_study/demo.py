@@ -1,3 +1,4 @@
 # Hello World => Dlrow Olleh
 
-s = "Hello World"
+
+print(10 // 10, 10 % 10)

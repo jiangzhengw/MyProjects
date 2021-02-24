@@ -388,3 +388,5 @@ print(sorted(dic.keys()))
 print(sorted(dic.values()))
 # todo:lambda表达式学习
 print(sorted(dic.items(), key=lambda item: item[1], reverse=True))
+
+# todo : 判断水仙花数
