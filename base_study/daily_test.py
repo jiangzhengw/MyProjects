@@ -390,3 +390,7 @@ print(sorted(dic.values()))
 print(sorted(dic.items(), key=lambda item: item[1], reverse=True))
 
 # todo : 判断水仙花数
+
+# 字符串大小写快速转换
+s = "Hello world!"
+print(s.swapcase())
