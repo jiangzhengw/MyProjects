@@ -47,6 +47,7 @@ import re
 
 ss = 'adafasw12314egrdf523.6qew123.111'
 num = re.findall('\d+', ss)
+res = re.findall('\d+\.?\d+', ss)
 res = re.findall('\d+\.?\d*', ss)
 print(num)
 new_list = [int(i) * 2 for i in list(num)]
@@ -154,7 +155,7 @@ print(bubble_sort(strs))
 # 100-199之间 | 200-249之间 | 250-255 之间| 10-99之间| 0-9 之间
 # \. 反斜杠表示转义
 # 25[0-5]|2[0-4]\d|[01]?\d\d?
-# 250-255 | 200-249 | 1-199
+# 250-255 | 200-249 | 0-199
 # ?	匹配前面的子表达式零次或一次，或指明一个非贪婪限定符。要匹配 ? 字符，请使用 \?。
 def checkip1(ip):
     p = re.compile(
@@ -387,3 +388,9 @@ print(sorted(dic.keys()))
 print(sorted(dic.values()))
 # todo:lambda表达式学习
 print(sorted(dic.items(), key=lambda item: item[1], reverse=True))
+
+# todo : 判断水仙花数
+
+# 字符串大小写快速转换
+s = "Hello world!"
+print(s.swapcase())
