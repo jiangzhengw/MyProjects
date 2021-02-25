@@ -53,20 +53,42 @@ print(find_shortest_sub_array(nums))
 # 你可以假设每种输入只会对应一个答案。但是，数组中同一个元素不能使用两遍。
 # 你可以按任意顺序返回答案。
 
+# 方法1：
 def two_sum(numbers: List[int], target: int) -> List[int]:
     l = len(numbers)
     for i in range(l):
         for j in range(i + 1, l):
             if numbers[i] + numbers[j] == target:
                 return [i, j]
+    return []
+
+
+# 方法二：
+class Solution2:
+    def two_sum(self, nums: List[int], target: int) -> List[int]:
+        hashtable = dict()
+        for i, num in enumerate(nums):
+            # print(num)
+            # 如果target的目标值和当前值的差，刚好存在表内，则返回当前num的下标，
+            # 和之前target-num对应的value下标
+            # 否则将当前数值和下标键值对形式存入字典哈希表内
+            if target - num in hashtable:
+                # print(hashtable)
+                return [hashtable[target - num], i]
+            hashtable[nums[i]] = i
+
+        return []
 
 
 nums = [2, 7, 11, 15]
 target = 9
 print(two_sum(nums, target))
-nums = [3, 2, 4]
+print(Solution2().two_sum(nums, target))
+nums = [4, 3, 2]
 target = 6
 print(two_sum(nums, target))
+print(Solution2().two_sum(nums, target))
 nums = [3, 3]
 target = 6
 print(two_sum(nums, target))
+print(Solution2().two_sum(nums, target))
