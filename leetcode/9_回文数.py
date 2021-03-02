@@ -1,6 +1,6 @@
 # Time: 2021/2/25 16:57
 # Author: jiangzhw
-# FileName: 9_Palindrome_Number.py
+# FileName: 9_回文数.py
 
 # 9. 回文数
 # 给你一个整数 x ，如果 x 是一个回文整数，返回 true ；否则，返回 false 。
