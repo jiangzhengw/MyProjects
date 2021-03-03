@@ -219,6 +219,7 @@ print(checkip2(ip2))
 """
 
 
+# todo：边界处理
 def binary_search(my_list, num):
     """
     二分算法
