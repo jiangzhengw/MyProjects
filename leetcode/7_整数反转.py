@@ -1,6 +1,6 @@
 # Time: 2021/2/25 14:08
 # Author: jiangzhw
-# FileName: 7_Reverse_Integer.py
+# FileName: 7_整数反转.py
 
 # 7. 整数反转
 # 给你一个 32 位的有符号整数 x ，返回 x 中每位上的数字反转后的结果。
