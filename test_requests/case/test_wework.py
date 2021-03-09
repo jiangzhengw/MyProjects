@@ -30,6 +30,8 @@ class TestWeWork:
         self.main = WeWork()
 
     @pytest.mark.parametrize("user_id,mobile,name", create_data())
+
+
     def test_we_work(self, user_id, mobile, name):
         """
         testing all of the wework

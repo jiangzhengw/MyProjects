@@ -394,4 +394,14 @@ print(sorted(dic.items(), key=lambda item: item[1], reverse=True))
 
 # 字符串大小写快速转换
 s = "Hello world!"
+# 都转换为大写
+print(s.upper())
+# 都转换为小写
+print(s.lower())
+# 大小写转换
 print(s.swapcase())
+# 首字母转换为大写，其他字母变为小写
+arr = s.split(" ")
+new_str = f"{arr[0].capitalize()} {arr[1].capitalize()}"
+print(new_str)
+print("hello world".title())
