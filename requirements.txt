@@ -50,7 +50,7 @@ packaging==20.9
 parse==1.19.0
 passlib==1.7.4
 pbr==5.5.1
-Pillow==8.1.1
+Pillow==8.3.2
 pluggy==0.13.1
 protobuf==3.13.0
 publicsuffix2==2.20191221
