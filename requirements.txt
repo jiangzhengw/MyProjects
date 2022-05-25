@@ -59,7 +59,7 @@ pyasn1==0.4.8
 pycparser==2.20
 pydivert==2.1.0
 PyHamcrest==2.0.2
-PyJWT==2.0.1
+PyJWT==2.4.0
 pyOpenSSL==19.1.0
 pyparsing==2.4.7
 pyperclip==1.8.2
