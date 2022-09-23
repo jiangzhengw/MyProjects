@@ -52,7 +52,7 @@ passlib==1.7.4
 pbr==5.5.1
 Pillow==8.1.1
 pluggy==0.13.1
-protobuf==3.13.0
+protobuf==3.18.3
 publicsuffix2==2.20191221
 py==1.10.0
 pyasn1==0.4.8
